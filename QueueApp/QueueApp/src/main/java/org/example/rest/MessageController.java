@@ -2,6 +2,7 @@ package org.example.rest;
 
 
 import org.example.core.QueueStorageService;
+import org.example.storage.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,4 +30,9 @@ public class MessageController {
         return queueStorageService.getInfoAboutNumberOfAllMessages();
     }
 
+    @GetMapping("/total")
+    int totalNumberOfReceivedMessages() {
+        int size = Storage.messageStorage.keySet().size();
+        return size;
+    }
 }

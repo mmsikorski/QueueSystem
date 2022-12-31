@@ -2,6 +2,7 @@ package org.testproject.rest;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,5 +27,6 @@ public class SenderController {
         httpService.toQueueGetRequest(s);
         return new StringBuilder("Message number ").append(s).toString();
     }
+
 
 }

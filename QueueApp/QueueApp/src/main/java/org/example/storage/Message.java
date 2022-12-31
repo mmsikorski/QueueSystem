@@ -6,12 +6,15 @@ public final class Message {
     String messageValue;
     String topic;
 
+    Boolean toSend;
+
     public Message(int id, String messageValue, String topic) {
         this.id = id;
         this.messageValue = messageValue;
 
         //TODO: add more topics listed in enum
         this.topic = topic;
+        this.toSend = true;
     }
 
     @Override
