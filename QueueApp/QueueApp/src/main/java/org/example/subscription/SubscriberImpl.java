@@ -1,8 +1,11 @@
 package org.example.subscription;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class SubscriberImpl implements Subscriber {
     public static Map<Integer, String> subs = new HashMap<>() {
         {
