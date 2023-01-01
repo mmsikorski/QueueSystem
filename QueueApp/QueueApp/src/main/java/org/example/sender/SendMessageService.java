@@ -2,5 +2,6 @@ package org.example.sender;
 
 public interface SendMessageService {
 
-    void sendMessageToPubs();
+
+    void sendMessagesToSubs();
 }
