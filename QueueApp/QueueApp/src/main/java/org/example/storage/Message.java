@@ -3,10 +3,10 @@ package org.example.storage;
 public final class Message {
 
     int id;
-    String messageValue;
+    public String messageValue;
     String topic;
 
-    Boolean toSend;
+    public Boolean toSend;
 
     public Message(int id, String messageValue, String topic) {
         this.id = id;

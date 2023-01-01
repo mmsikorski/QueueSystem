@@ -15,7 +15,7 @@ public class Main {
         System.out.println(message1);
 
         System.out.println("Hello world!");
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000; i++) {
             String message2 = messageLoader.getMessage();
             System.out.println(message2);
         }
