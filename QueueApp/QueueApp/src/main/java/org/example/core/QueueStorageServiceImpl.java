@@ -26,7 +26,9 @@ public class QueueStorageServiceImpl implements QueueStorageService{
     @Override
     public void putMessageToStorage(int messageValue) {
 //        Message message = messageTransformer.transformMessageFromRest(messageValue);
-        Message message = new Message(messageValue, "Message", "Topic");
+        String s = new StringBuilder().append("Message").append("_").append(messageValue).toString();
+//        Message message = new Message(messageValue, "Message", "Topic");
+        Message message = new Message(messageValue, s, "Topic");
         Storage.messageStorage.put(messageValue, message);
     }
 
