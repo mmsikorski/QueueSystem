@@ -1,6 +1,6 @@
 package org.example.subscription;
 
-public interface PubSumModelFactory {
+public interface PubSubModelFactory {
 
     PubSubModel createPubSubModel();
 }
