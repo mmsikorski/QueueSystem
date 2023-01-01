@@ -18,13 +18,10 @@ public class SendJobRunnerImpl implements SendJobRunner{
     SendJobState sendJobState;
     JobStateInfo jobStateInfo;
 
-    SendJobRunner sendJobRunner;
-
     @Autowired
-    public SendJobRunnerImpl(SendJobState sendJobState, JobStateInfo jobStateInfo, SendJobRunner sendJobRunner) {
+    public SendJobRunnerImpl(SendJobState sendJobState, JobStateInfo jobStateInfo) {
         this.sendJobState = sendJobState;
         this.jobStateInfo = jobStateInfo;
-        this.sendJobRunner = sendJobRunner;
     }
 
     @Override
@@ -47,8 +44,10 @@ public class SendJobRunnerImpl implements SendJobRunner{
     }
     @Override
     public void run() {
-        Random random = new Random();
-        int i = random.nextInt();
-        jobStateInfo.currentJobInfo = new StringBuilder().append(i).toString();
+        while(true) {
+            Random random = new Random();
+            int i = random.nextInt();
+            jobStateInfo.currentJobInfo = new StringBuilder().append(i).toString();
+        }
     }
 }

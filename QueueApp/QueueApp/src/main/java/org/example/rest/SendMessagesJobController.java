@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("job")
+@RequestMapping("/job")
 @RestController
 public class SendMessagesJobController {
 
     SendJobRunner sendJobRunner;
     JobStateInfo jobStateInfo;
+
+    Thread t1;
 
     @Autowired
     public SendMessagesJobController(SendJobRunner sendJobRunner, JobStateInfo jobStateInfo) {
@@ -23,7 +25,7 @@ public class SendMessagesJobController {
     @RequestMapping("/start")
     String startSending() {
         sendJobRunner.turnOnSendingMessages();
-        Thread t1 = new Thread(sendJobRunner);
+        t1 = new Thread(sendJobRunner);
         t1.start();
 
         return "Sending to subs is turned on.";
@@ -32,12 +34,14 @@ public class SendMessagesJobController {
     @RequestMapping("/end")
     String turnOffSending() {
         sendJobRunner.turnOffSendingMessages();
+        t1.interrupt();
         return "Sending to subs is turned off";
     }
 
     @GetMapping("/currentjob")
     String currentJobInfo() {
-        String currentJobInfo = jobStateInfo.currentJobInfo;
+        String currentJobInfo = jobStateInfo.currentTask();
+
         return currentJobInfo;
     }
 }
