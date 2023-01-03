@@ -63,10 +63,10 @@ public class HttpServiceImpl implements HttpService {
                 e.printStackTrace();
 
             } finally {
-                if (connection != null) {
-                    connection.disconnect();
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
                 }
-            }
             }
         }
     }
