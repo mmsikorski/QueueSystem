@@ -2,30 +2,44 @@ package org.example.core.server;
 
 public class QueueServerModelBuilderImpl implements QueueServerModelBuilder {
 
-    String serverName;
-    String serverAddress; //Default value is null
-    Integer port; //Default value is 0
+    QueueServerModelBuilderImpl builder;
+    public String serverName;
+    public String serverAddress; //Default value is null
+    public Integer port; //Default value is 0
 
 
 
     @Override
-    public void setServerAddress(String serverAddress) {
-        this.serverAddress = serverAddress;
+    public QueueServerModelBuilder builder() {
+        this.builder = new QueueServerModelBuilderImpl();
+        return this.builder;
     }
 
     @Override
-    public void setServerPort(Integer port) {
-        this.port = port;
+    public QueueServerModelBuilder setServerAddress(String serverAddress) {
+        this.builder.serverAddress = serverAddress;
+//        this.serverAddress = serverAddress;
+        return this.builder;
     }
 
     @Override
-    public void setStateServer() {
+    public QueueServerModelBuilder setServerPort(Integer port) {
+        this.builder.port = port;
+//        this.port = port;
+        return this.builder;
 
     }
 
     @Override
-    public void setServerName(String serverName) {
-        this.serverName = serverName;
+    public QueueServerModelBuilder setStateServer() {
+    //not finished yet
+        return this.builder;
+    }
+
+    @Override
+    public QueueServerModelBuilder setServerName(String serverName) {
+        this.builder.serverName = serverName;
+        return this.builder;
     }
 
     @Override
