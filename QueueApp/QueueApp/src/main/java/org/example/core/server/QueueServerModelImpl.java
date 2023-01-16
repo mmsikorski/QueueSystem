@@ -6,10 +6,14 @@ public class QueueServerModelImpl implements QueueServerModel {
     String serverAddress;
     Integer port;
 
-    public QueueServerModelImpl(String serverName, String serverAddress, Integer port) {
-        this.serverName = serverName;
-        this.serverAddress = serverAddress;
-        this.port = port;
+    public QueueServerModelImpl(QueueServerModelBuilderImpl builder) {
+        this.serverName = builder.getServerName();
+        this.serverAddress = builder.getServerAddress();
+        this.port = builder.getServerPort();
     }
 
+    @Override
+    public QueueServerModelBuilder builder() {
+        return new QueueServerModelBuilderImpl();
+    }
 }
