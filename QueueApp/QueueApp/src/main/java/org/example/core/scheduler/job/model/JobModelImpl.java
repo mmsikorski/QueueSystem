@@ -64,7 +64,7 @@ public class JobModelImpl implements JobModel {
      */
     @Override
     public JobNames getJobName() {
-        return null;
+        return jobName;
     }
 
     @Override

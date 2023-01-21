@@ -6,7 +6,7 @@ public class JobStorageFactoryImpl implements JobStorageFactory {
 
     //Singleton
     public JobStorageFactoryImpl() {
-
+        jobStorage = new JobStorage();
     }
 
     /**
@@ -15,11 +15,15 @@ public class JobStorageFactoryImpl implements JobStorageFactory {
     @Override
     public JobStorage createJobStorage() {
 
-        if (jobStorage == null) {
-            jobStorage =  new JobStorage();
-        }
+        JobStorage jobStorage = new JobStorage();
+        if (JobStorageFactoryImpl.jobStorage == null) {
+            JobStorageFactoryImpl.jobStorage = jobStorage;
+        } else {
+            return JobStorageFactoryImpl.jobStorage;
 
-        return jobStorage;
+        }
+        return JobStorageFactoryImpl.jobStorage;
+
     }
 
 

@@ -52,10 +52,11 @@ class JobStorageFactoryImplTest {
         jobModel.setJobName(JobNames.MINUTE);
         jobStorage.addJob(jobModel);
 
-        JobModel jobByKey = jobStorage.getJobByKey(JobNames.MINUTE);
-        String additionalInfo = jobByKey.getAdditionalInfo();
-        System.out.println(additionalInfo);
+        JobStorage jobStorage1 = jobStorageFactory.createJobStorage();
+        JobModel jobByKey = jobStorage1.getJobByKey(JobNames.MINUTE);
+        String additionalInfoFromSecondStorage = jobByKey.getAdditionalInfo();
 
+        Assertions.assertEquals(initInfo, additionalInfoFromSecondStorage);
 
 //        Assertions.assertEquals(additionalInfo, "info");
 
