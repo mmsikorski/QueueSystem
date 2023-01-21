@@ -3,7 +3,7 @@ package org.example.core.scheduler;
 import org.example.core.scheduler.job.model.JobStorage;
 import org.example.core.scheduler.job.model.JobStorageFactoryImpl;
 
-public class MainSchedulerRunnerImpl implements MainSchedulerRunner {
+public class SchedulerMainSpecImpl implements SchedulerMainSpec {
 
     JobStorage jobStorage;
     ScheduledJobExecutor scheduledJobExecutor;
@@ -11,8 +11,9 @@ public class MainSchedulerRunnerImpl implements MainSchedulerRunner {
 
     void initSchedulerRunner() {
         this.jobStorage = new JobStorageFactoryImpl().createJobStorage();
+        this.scheduledJobExecutor = new ScheduledJobExecutorImpl();
     }
-
+    
     /**
      *
      */
@@ -22,6 +23,9 @@ public class MainSchedulerRunnerImpl implements MainSchedulerRunner {
         initSchedulerRunner();
 
         while(true) {
+            jobStorage.getJobStorage().forEach((x, y) -> {
+                y.execute();
+            });
 
         }
 
