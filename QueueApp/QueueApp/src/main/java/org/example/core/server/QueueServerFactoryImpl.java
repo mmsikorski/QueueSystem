@@ -1,12 +1,16 @@
 package org.example.core.server;
 
+import com.sun.net.httpserver.HttpServer;
+
 public class QueueServerFactoryImpl implements QueueServerFactory {
     /**
      *
      */
     @Override
     public void createNewServerInstance() {
-
+        QueueServerModel server = new QueueServerModelImpl().builder()
+                .setServerName("Mockup server")
+                .build();
     }
 
     /**

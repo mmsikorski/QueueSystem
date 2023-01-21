@@ -6,5 +6,5 @@ public interface QueueServerModel {
 
     QueueServerModelBuilder builder();
 
-    <T extends ServerParameters<? extends Object>> Map<String, ServerParameters<T>> getParams();
+    <T extends ServerParameters<?>> Map<String, ServerParameters<T>> getParams();
 }
