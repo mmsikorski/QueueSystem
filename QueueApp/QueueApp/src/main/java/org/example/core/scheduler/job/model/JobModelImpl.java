@@ -2,10 +2,13 @@ package org.example.core.scheduler.job.model;
 
 import org.example.core.scheduler.job.creator.JobLogic;
 
+import java.util.concurrent.FutureTask;
+
 public class JobModelImpl implements JobModel {
 
     JobNames jobName;
     private boolean jobState;
+    private String info;
 
 
     /**
@@ -42,8 +45,19 @@ public class JobModelImpl implements JobModel {
      */
     @Override
     public void execute() {
-
+    logicToExecute();
     }
+
+    @Override
+    public void setAdditionalInfo(String info) {
+        this.info = info;
+    }
+
+    @Override
+    public String getAdditionalInfo() {
+        return this.info;
+    }
+
 
     /**
      * @return

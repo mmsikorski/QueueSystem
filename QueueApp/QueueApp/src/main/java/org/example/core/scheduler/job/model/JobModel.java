@@ -1,10 +1,10 @@
 package org.example.core.scheduler.job.model;
 
-import org.example.core.scheduler.job.creator.JobLogic;
-
 public interface JobModel {
 
     void execute();
+    void setAdditionalInfo(String info);
+    String getAdditionalInfo();
     void setExecutionTimeFrequency();
     void setJobName(JobNames jobName);
     boolean getJobState();
