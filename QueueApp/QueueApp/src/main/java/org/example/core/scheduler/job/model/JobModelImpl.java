@@ -5,6 +5,8 @@ import org.example.core.scheduler.job.creator.JobLogic;
 public class JobModelImpl implements JobModel {
 
     JobNames jobName;
+    private boolean jobState;
+
 
     /**
      *
@@ -23,6 +25,19 @@ public class JobModelImpl implements JobModel {
     }
 
     /**
+     * @return
+     */
+    @Override
+    public boolean getJobState() {
+       return jobState;
+    }
+
+    @Override
+    public void setJobState(boolean jobState) {
+        this.jobState = jobState;
+    }
+
+    /**
      * @param
      */
     @Override
@@ -36,5 +51,10 @@ public class JobModelImpl implements JobModel {
     @Override
     public JobNames getJobName() {
         return null;
+    }
+
+    @Override
+    public void logicToExecute() {
+        System.out.println("Execution");
     }
 }
