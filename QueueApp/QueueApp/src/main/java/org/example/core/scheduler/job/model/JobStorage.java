@@ -11,6 +11,10 @@ public final class JobStorage {
         jobStorage.put(jobModel.getJobName(), jobModel.getJobModel());
     }
 
+    public Map<JobNames, JobModel> getJobStorage() {
+        return jobStorage;
+    }
+
 
 
 }
