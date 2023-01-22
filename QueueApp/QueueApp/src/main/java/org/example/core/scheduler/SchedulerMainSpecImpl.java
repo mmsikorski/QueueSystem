@@ -22,12 +22,10 @@ public class SchedulerMainSpecImpl implements SchedulerMainSpec {
 
         initSchedulerRunner();
 
-        while(true) {
             jobStorage.getJobStorage().forEach((x, y) -> {
                 y.execute();
             });
 
-        }
 
     }
 }
