@@ -7,7 +7,7 @@ public final class JobStorage {
 
     static Map<JobNames, JobModel> jobStorage = new HashMap<>();
 
-    void addJob(JobModel jobModel) {
+    public void putJob(JobModel jobModel) {
         jobStorage.put(jobModel.getJobName(), jobModel);
     }
 
@@ -15,6 +15,6 @@ public final class JobStorage {
         return jobStorage;
     }
 
-
+    public JobModel getJobByKey(JobNames jobNames) { return jobStorage.get(jobNames); }
 
 }
