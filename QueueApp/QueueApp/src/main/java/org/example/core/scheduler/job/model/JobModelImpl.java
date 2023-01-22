@@ -9,7 +9,7 @@ public class JobModelImpl implements JobModel {
     JobNames jobName;
     private boolean jobState;
     private String info;
-
+    LogicToExecute l;
 
     /**
      *
@@ -45,7 +45,11 @@ public class JobModelImpl implements JobModel {
      */
     @Override
     public void execute() {
-    logicToExecute();
+        if (l != null) {
+            logicToExecute(this.l);
+        } else {
+            logicToExecute();
+        }
     }
 
     @Override
@@ -58,7 +62,6 @@ public class JobModelImpl implements JobModel {
         return this.info;
     }
 
-
     /**
      * @return
      */
@@ -69,6 +72,22 @@ public class JobModelImpl implements JobModel {
 
     @Override
     public void logicToExecute() {
-        System.out.println("Execution");
+        System.out.println("Default Execution");
+    }
+
+    /**
+     * @param l
+     */
+    @Override
+    public void setLogicToExecute(LogicToExecute l) {
+        this.l = l;
+    }
+
+    /**
+     * @param l
+     */
+    @Override
+    public void logicToExecute(LogicToExecute l) {
+        l.logicToExecute();
     }
 }
