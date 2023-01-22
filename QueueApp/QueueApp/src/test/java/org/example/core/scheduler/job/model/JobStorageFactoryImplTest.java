@@ -4,15 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
 class JobStorageFactoryImplTest {
 
     JobStorageFactory jobStorageFactory;
 
     @BeforeEach
     void setUp() {
-
         jobStorageFactory = new JobStorageFactoryImpl();
     }
 
@@ -28,14 +25,14 @@ class JobStorageFactoryImplTest {
 
 
     @Test
-    void createTwoJobStorage_andAddJobToTheFirstOne_theCheckObjectsEquality() {
+    void createTwoJobStorage_andAddJobToTheFirstOne_thenCheckObjectsEquality() {
 
         JobStorage jobStorage1 = jobStorageFactory.createJobStorage();
         JobStorage jobStorage2 = jobStorageFactory.createJobStorage();
 
         JobModel jobModel = new JobModelImpl();
         jobModel.setJobName(JobNames.MINUTE);
-        jobStorage1.addJob(jobModel);
+        jobStorage1.putJob(jobModel);
 
         boolean b = jobStorage1.equals(jobStorage2) ? true : false;
 
@@ -44,13 +41,13 @@ class JobStorageFactoryImplTest {
 
     //TODO: Fix test because jobStorage doesn't work correctly
     @Test
-    void createTwoJobStorages_thenAddJobToTheFristAndExtractJobFromSecondOne_thenCheckJobCorrectness() {
+    void createTwoJobStorages_thenAddJobToTheFirstAndExtractJobFromSecondOne_thenCheckJobCorrectness() {
         JobStorage jobStorage = jobStorageFactory.createJobStorage();
         JobModel jobModel = new JobModelImpl();
         String initInfo = "info";
         jobModel.setAdditionalInfo(initInfo);
         jobModel.setJobName(JobNames.MINUTE);
-        jobStorage.addJob(jobModel);
+        jobStorage.putJob(jobModel);
 
         JobStorage jobStorage1 = jobStorageFactory.createJobStorage();
         JobModel jobByKey = jobStorage1.getJobByKey(JobNames.MINUTE);
